@@ -3,3 +3,12 @@
     background-color: rgb(46, 44, 44);
     color: rgb(71, 177, 35);
 }
+
+h1 {
+    font-size: 2.5em;
+}
+
+.main {
+    margin-left: 10%;
+    margin-top: 10%;
+}
