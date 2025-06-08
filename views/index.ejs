@@ -1,7 +1,8 @@
 <%- include("partials/header.ejs") %>
 
-    
-<section class="main">
+
+<main>
+<section>
     <h1>Bookshelf</h1>
 
     <form action="/submit" method="POST">
@@ -9,6 +10,26 @@
         <button type="submit">Submit</button>
     </form>
 </section>
+
+<section class="google-books-wrapper">
+    <% if (locals.searchBooks) { %>
+        <% searchBooks.forEach(book => { %>
+            <div class="google-book">
+                <p> <%= book.title %></p>
+                <p> <%= book.authors %></p>
+                <a href="/new-book/<%=book.isbn%>">
+                    <img src="<%= book.cover %>" alt="Book cover">
+                </a>
+                <p> <%= book.isbn %></p>
+            </div>
+
+        <% }); %>
+    <% } %>
+
+</section>
+
+</main>
+
 
 
 

@@ -8,7 +8,14 @@ h1 {
     font-size: 2.5em;
 }
 
-.main {
+main {
     margin-left: 10%;
     margin-top: 10%;
+}
+
+.google-books-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+
 }
