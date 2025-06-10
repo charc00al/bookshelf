@@ -3,14 +3,14 @@
 
 <main>
 <section>
-    <h1>Bookshelf</h1>
+    <a href="/">    
+        <h1>Bookshelf</h1>
+    </a>
 
     <form action="/submit" method="POST">
         <input type="text" name="input" placeholder="Search for a book">
         <button type="submit">Add new book</button>
     </form>
-
-
 
 </section>
 
@@ -29,6 +29,21 @@
         <% }); %>
     <% } %>
 
+</section>
+
+<section class="bookshelf">
+        <h2>My books</h2>
+        <% if (locals.bookshelf) { %>
+        <% bookshelf.forEach(book => { %>
+            <div class="shelf-book">
+                <p> <%= book.title %></p>
+                <p> <%= book.author %></p>
+                <img src="<%= book.cover_url %>" alt="Book cover">
+                <p> <%= book.isbn %></p>
+                <p> <%= book.date_added %></p>
+            </div>
+        <% }); %>
+    <% } %>
 </section>
 
 </main>

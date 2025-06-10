@@ -13,11 +13,12 @@ main {
     margin-top: 10%;
 }
 
-.google-books-wrapper {
+.google-books-wrapper, .bookshelf {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
 }
+
 
 .add-book {
     display: flex;
@@ -31,3 +32,4 @@ main {
     border-color: green;
     border-style: solid;
 }
+

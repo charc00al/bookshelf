@@ -9,9 +9,23 @@ const port = 3000
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+const db = new pg.Client({
+  user: "postgres",
+  host: "localhost",
+  database: "bookshelf",
+  password: "gandalf",
+  port: 5432,
+});
+
+db.connect();
+
+let bookshelf = [];
+
 // homepage
-app.get("/", (req, res) => {
-    res.render("index.ejs");
+app.get("/", async (req, res) => {
+    const result = await db.query("SELECT * FROM books_test");
+    console.log(result.rows);
+    res.render("index.ejs", {bookshelf: result.rows});
 })
 
 const apiURL = "https://www.googleapis.com/books/v1/volumes?q=intitle:"
@@ -79,7 +93,8 @@ app.get("/new-book/:isbn", (req, res) => {
     res.render("new-book.ejs", {book: foundBook});
 })
 
-app.post("/add-new-book", (req, res) => {
+// add new book to the bookshelf (on homepage)
+app.post("/add-new-book/:isbn", (req, res) => {
     res.redirect("/");
 })
 
