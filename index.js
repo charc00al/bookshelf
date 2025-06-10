@@ -9,17 +9,17 @@ const port = 3000
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-
+// homepage
 app.get("/", (req, res) => {
     res.render("index.ejs");
 })
 
 const apiURL = "https://www.googleapis.com/books/v1/volumes?q=intitle:"
 
-// filter out non-desired books from google books api after search
+// filter out non-desired books from google books api search
 function filterGoogleBooks(allFoundBooks) {
     const filteredBooks = allFoundBooks.filter((foundBook) => {
-        // a book has to have: title, author(s), date of publishing, ISBN 13 and cover image
+        // book has to have: title, author(s), date of publishing, ISBN and cover image
         const book = foundBook.volumeInfo;
         const hasAllData = book
             && book.title
@@ -28,9 +28,15 @@ function filterGoogleBooks(allFoundBooks) {
             && Array.isArray(book.industryIdentifiers)
             && book.imageLinks;
 
+        // book has to have ISBN 13
         const hasIsbn13 = hasAllData && book.industryIdentifiers.some(({type}) => type == 'ISBN_13');
-
-        return hasAllData && hasIsbn13;
+        
+        // book cannot have specific words in the title 
+        const keywords = ["summary", "boxed set", "collector's", "special edition"];
+        const titleIncludes = (keyword) => book.title.toLowerCase().includes(keyword);
+        const checkedTitle = keywords.some(titleIncludes);
+    
+        return hasAllData && hasIsbn13 && !checkedTitle;
     })
     return filteredBooks
 }
@@ -49,7 +55,7 @@ function displayGoogleBooks(cleanBooks) {
         }
         displayedBooks.push(book);
     });
-    console.log(displayedBooks);
+    // console.log(displayedBooks);
     return displayedBooks
 }
 
