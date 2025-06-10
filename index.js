@@ -59,12 +59,13 @@ function displayGoogleBooks(cleanBooks) {
     return displayedBooks
 }
 
+let searchBooks = []
 // using intitle only for now 
 app.post("/submit", async (req, res) => {
     try {
         const response = await axios.get(apiURL + encodeURIComponent(req.body.input));
         const cleanBooks = filterGoogleBooks(response.data.items);
-        const searchBooks = displayGoogleBooks(cleanBooks);
+        searchBooks = displayGoogleBooks(cleanBooks);
         res.render("index.ejs", {searchBooks: searchBooks})
 
     } catch (error) {
@@ -74,9 +75,14 @@ app.post("/submit", async (req, res) => {
 
 // create new book based on search
 app.get("/new-book/:isbn", (req, res) => {
-    console.log("HELLO");
+    const foundBook = searchBooks.find(({isbn}) => isbn === req.params.isbn);
+    res.render("new-book.ejs", {book: foundBook});
+})
+
+app.post("/add-new-book", (req, res) => {
     res.redirect("/");
 })
+
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}.`)

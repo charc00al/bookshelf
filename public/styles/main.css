@@ -17,5 +17,17 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
+}
 
+.add-book {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.add-book input {
+    margin: 10px 0;
+    
+    border-color: green;
+    border-style: solid;
 }
