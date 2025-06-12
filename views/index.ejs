@@ -38,11 +38,11 @@
         <% if (locals.bookshelf) { %>
         <% bookshelf.forEach(book => { %>
             <div class="shelf-book book">
-                <p> <%= book.title %></p>
-                <p> <%= book.author %></p>
+                <h3 class="title"> <%= book.title %></h3>
+                <p class="author"> <%= book.author %></p>
                 <img src="<%= book.cover_url %>" alt="Book cover" class="book-cover">
-                <p> <%= book.isbn %></p>
-                <p> <%= book.date_added %></p>
+                <p class="isbn"> <%= book.isbn %></p>
+                <p class="date"> <%= book.date_added.toLocaleDateString() %></p>
                 <form action="/delete-book" method="post">
                     <input type="hidden" name="isbn" value="<%= book.isbn %>">
                     <button class="btn delete-btn">Delete</button>
