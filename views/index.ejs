@@ -7,43 +7,46 @@
         <h1>Bookshelf</h1>
     </a>
 
-    <form action="/submit" method="POST">
+    <form class="google-search" action="/submit" method="POST">
         <input type="text" name="input" placeholder="Search for a book">
-        <button type="submit">Add new book</button>
+        <button class="btn" type="submit">Add new book</button>
     </form>
 
 </section>
 
 <section class="google-books-wrapper">
-    <% if (locals.searchBooks) { %>
-        <% searchBooks.forEach(book => { %>
-            <div class="google-book">
-                <p> <%= book.title %></p>
-                <p> <%= book.authors %></p>
-                <a href="/new-book/<%=book.isbn%>">
-                    <img src="<%= book.cover %>" alt="Book cover">
-                </a>
-                <p> <%= book.isbn %></p>
-            </div>
+    <div class="google-bookshelf">
+        <% if (locals.searchBooks) { %>
+            <% searchBooks.forEach(book => { %>
+                <div class="google-book book">
+                    <p> <%= book.title %></p>
+                    <p> <%= book.authors %></p>
+                    <a href="/new-book/<%=book.isbn%>">
+                        <img src="<%= book.cover %>" alt="Book cover">
+                    </a>
+                    <p> <%= book.isbn %></p>
+                </div>
 
-        <% }); %>
-    <% } %>
-
+            <% }); %>
+        <% } %>
+    </div>
 </section>
 
-<section class="bookshelf">
-        <h2>My books</h2>
+<section class="bookshelf-wrapper">
+    <h2>My books</h2>
+    <div class="bookshelf">
         <% if (locals.bookshelf) { %>
         <% bookshelf.forEach(book => { %>
-            <div class="shelf-book">
+            <div class="shelf-book book">
                 <p> <%= book.title %></p>
                 <p> <%= book.author %></p>
-                <img src="<%= book.cover_url %>" alt="Book cover">
+                <img src="<%= book.cover_url %>" alt="Book cover" class="book-cover">
                 <p> <%= book.isbn %></p>
                 <p> <%= book.date_added %></p>
             </div>
         <% }); %>
     <% } %>
+    </div>
 </section>
 
 </main>
