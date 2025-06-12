@@ -43,6 +43,10 @@
                 <img src="<%= book.cover_url %>" alt="Book cover" class="book-cover">
                 <p> <%= book.isbn %></p>
                 <p> <%= book.date_added %></p>
+                <form action="/delete-book" method="post">
+                    <input type="hidden" name="isbn" value="<%= book.isbn %>">
+                    <button class="btn delete-btn">Delete</button>
+                </form>
             </div>
         <% }); %>
     <% } %>

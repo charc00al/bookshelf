@@ -53,15 +53,17 @@ h1 {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s ease;
   margin-top: 1rem;
 }
 
 .btn:hover {
   background-color: var(--green);
-  transform: translateY(-2px);
+  /* transform: translateY(-1px); */
 }
 
+.delete-btn:hover {
+    background-color: darkred;
+}
 
 /* GRID FOR BOOKS */ 
 
@@ -89,7 +91,9 @@ h1 {
 }
 
 .book:hover {
-  transform: translateY(-5px);
+    transform: scale(1.01);
+    box-shadow: 0 0 4px darkolivegreen;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Responsive Breakpoints */

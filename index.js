@@ -103,6 +103,11 @@ app.post("/add-new-book", async (req, res) => {
     res.redirect("/");
 })
 
+app.post("/delete-book", async (req, res) => {
+    await db.query("DELETE FROM books_test WHERE isbn=$1", [req.body.isbn]);
+    res.redirect("/");
+})
+
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}.`)
