@@ -24,7 +24,7 @@ let bookshelf = [];
 // homepage
 app.get("/", async (req, res) => {
     const result = await db.query("SELECT * FROM books_test");
-    console.log(result.rows);
+    // console.log(result.rows);
     res.render("index.ejs", {bookshelf: result.rows});
 })
 
@@ -73,7 +73,7 @@ function displayGoogleBooks(cleanBooks) {
     return displayedBooks
 }
 
-let searchBooks = []
+let searchBooks = [];
 // using intitle only for now 
 app.post("/submit", async (req, res) => {
     try {
@@ -87,14 +87,19 @@ app.post("/submit", async (req, res) => {
     }
 })
 
+let chosenBook = {};
 // create new book based on search
 app.get("/new-book/:isbn", (req, res) => {
     const foundBook = searchBooks.find(({isbn}) => isbn === req.params.isbn);
+    chosenBook = foundBook;
     res.render("new-book.ejs", {book: foundBook});
 })
 
 // add new book to the bookshelf (on homepage)
-app.post("/add-new-book/:isbn", (req, res) => {
+app.post("/add-new-book", async (req, res) => {
+    console.log(chosenBook);
+    const b = chosenBook
+    await db.query("INSERT INTO books_test (title, author, isbn, cover_url) VALUES ($1, $2, $3, $4)", [b.title, b.authors[0], b.isbn, b.cover]);
     res.redirect("/");
 })
 
