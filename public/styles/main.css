@@ -2,26 +2,39 @@
 /* ALL */ 
 
 :root {
-    --green: rgb(137, 183, 56);
+    --green: rgb(68, 81, 51);
     --dark-grey: rgb(46, 44, 44);
+    --opaque-grey: rgba(196, 196, 196, 0.5);
+    --whiteish: rgb(213, 213, 213)
+}
+
+@font-face {
+  font-family: poppinsLight;
+  src: url(poppins/Poppins-Light.ttf);
+  font-weight: light;
 }
 
 * {
-    color: var(--green);
-    font-family: sans-serif;
+    color: white;
+    font-family: poppinsLight, sans-serif;;
 }
 
 body {
-    background-color: var(--dark-grey);
+    background-color: var(--green);
     padding: 4rem;
 }
 
 h1 {
     font-size: 2.5em;
+    text-decoration: none;
 }
 
 .title {
     font-size: 1.1rem;
+}
+
+.page-heading {
+  text-decoration: none;
 }
 
 .author {
@@ -33,6 +46,18 @@ h1 {
 }
 
 /* ADD BOOK */ 
+input {
+  background-color: var(--whiteish);
+  border-radius: 30px;
+  border-style: none;
+  height: 50px;
+  width: 200px;
+  outline: none;
+}
+
+input[type="text"] {
+  padding-left: 1rem;
+}
 
 .add-book {
     display: flex;
@@ -41,22 +66,13 @@ h1 {
     background-color: var(--dark-grey)
 }
 
-.add-book input, .google-search input {
-    background-color: var(--dark-grey);
-    padding: 0.5rem;
-    border-radius: 8px;
-    outline: none;
-    margin: 8px 0;
-    border-color: darkolivegreen;
-    border-style: solid;
-}
-
 .add-book label {
-    font-size: 1.5rem;
-    color: darkolivegreen;
-    padding-top: 0.5rem;
+  font-size: 1.5rem;
+  color: darkolivegreen;
+  padding-top: 0.5rem;
 }
 
+/* button */ 
 .btn {
   padding: 0.5rem;
   font-size: 1rem;
@@ -77,7 +93,75 @@ h1 {
     background-color: darkred;
 }
 
+/* HOMEPAGE LAYOUT */ 
+.homepage-main {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 1fr auto;
+}
+
+.search {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* sidebar */ 
+.sidebar-wrapper {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.sidebar {
+  margin-top: 1rem;
+  margin-right: 1rem;
+  height: 650px;
+  width: 250px;
+  background-color: var(--opaque-grey);
+  border-radius: 30px;
+}
+
+.bookshelf-search {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bookshelf-search .btn {
+  position: absolute;
+  top: 50%;
+  right: 1.7rem;
+  transform: translateY(-50%);
+  border: none;
+  color: #fff;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bookshelf-search input{
+  width: 80%;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+
+.sidebar-text {
+  padding-left: 20px;
+  font-size: 1rem;
+}
+
+
 /* GRID FOR BOOKS */ 
+
+.books-wrapper {
+  grid-column: 2;
+  grid-row: 2;
+}
 
 .google-bookshelf, .bookshelf {
   display: grid;
@@ -93,8 +177,6 @@ h1 {
   box-shadow: 0 2px 10px var(--dark-grey);
   text-align: center;
   transition: transform 0.2s ease;
-  border: darkolivegreen;
-  border-style: solid;
 }
 
 .book-cover {
@@ -104,11 +186,15 @@ h1 {
 
 .book:hover {
     transform: scale(1.01);
-    box-shadow: 0 0 4px darkolivegreen;
+    box-shadow: 0 0 1px var(--green);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+
+
+
 /* Responsive Breakpoints */
+
 @media (min-width: 650px) {
   .google-bookshelf, .bookshelf {
     grid-template-columns: repeat(2, 1fr);

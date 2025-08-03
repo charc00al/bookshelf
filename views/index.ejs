@@ -1,20 +1,41 @@
 <%- include("partials/header.ejs") %>
 
 
-<main>
-<section>
-    <a href="/">    
-        <h1>Bookshelf</h1>
-    </a>
+<main class="homepage-main">
 
+<section class="search">
     <form class="google-search" action="/submit" method="POST">
-        <input type="text" name="input" placeholder="Search for a book">
-        <button class="btn" type="submit">Add new book</button>
+        <input type="text" name="input" placeholder="add new book">
+        <button class="btn" type="submit">search</button>
     </form>
-
 </section>
 
-<section class="google-books-wrapper">
+<section class="sidebar-wrapper">
+    <div class="sidebar">
+        <form class="bookshelf-search" action="">
+            <input type="text" name="input" placeholder="search bookshelf">
+            <button class="btn" type="submit">></button>
+        </form>
+        <div class="sidebar-text">
+            <h4>Status</h4>
+            <p>All Books</p>
+            <p>Reading</p>
+            <p>Wishlist</p>
+            <p>Finished books</p>
+
+            <h4>Sort by</h4>
+            <p>Date</p>
+            <p>Reviews</p>
+            <p>Status</p>
+
+            <h4>View</h4>
+            <p>Tiles</p>
+            <p>Content</p>
+        </div>
+    </div>
+</section>
+
+<section class="google-books-wrapper books-wrapper">
     <div class="google-bookshelf">
         <% if (locals.searchBooks) { %>
             <% searchBooks.forEach(book => { %>
@@ -32,8 +53,7 @@
     </div>
 </section>
 
-<section class="bookshelf-wrapper">
-    <h2>My books</h2>
+<section class="bookshelf-wrapper books-wrapper">
     <div class="bookshelf">
         <% if (locals.bookshelf) { %>
         <% bookshelf.forEach(book => { %>
