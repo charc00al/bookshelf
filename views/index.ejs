@@ -3,7 +3,7 @@
 
 <main class="homepage-main">
 
-<section class="search">
+<section class="add-book-search">
     <form class="google-search" action="/submit" method="POST">
         <input type="text" name="input" placeholder="add new book">
         <button class="btn" type="submit">search</button>
@@ -40,14 +40,14 @@
         <% if (locals.searchBooks) { %>
             <% searchBooks.forEach(book => { %>
                 <div class="google-book book">
-                    <p> <%= book.title %></p>
-                    <p> <%= book.authors %></p>
+                    <h3 class="title"> <%= book.title %></h3>
+                    <p class="author"> <%= book.authors %></p>
                     <a href="/new-book/<%=book.isbn%>">
                         <img src="<%= book.cover %>" alt="Book cover">
                     </a>
                     <p> <%= book.isbn %></p>
-                </div>
 
+                </div>
             <% }); %>
         <% } %>
     </div>
@@ -58,15 +58,9 @@
         <% if (locals.bookshelf) { %>
         <% bookshelf.forEach(book => { %>
             <div class="shelf-book book">
+                <img src="<%= book.cover_url %>" alt="Book cover" class="book-cover">
                 <h3 class="title"> <%= book.title %></h3>
                 <p class="author"> <%= book.author %></p>
-                <img src="<%= book.cover_url %>" alt="Book cover" class="book-cover">
-                <p class="isbn"> <%= book.isbn %></p>
-                <p class="date"> <%= book.date_added.toLocaleDateString() %></p>
-                <form action="/delete-book" method="post">
-                    <input type="hidden" name="isbn" value="<%= book.isbn %>">
-                    <button class="btn delete-btn">Delete</button>
-                </form>
             </div>
         <% }); %>
     <% } %>
