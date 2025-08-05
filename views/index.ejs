@@ -53,6 +53,7 @@
     </div>
 </section>
 
+<% if (!locals.searchBooks) { %>
 <section class="bookshelf-wrapper books-wrapper">
     <div class="bookshelf">
         <% if (locals.bookshelf) { %>
@@ -66,7 +67,7 @@
     <% } %>
     </div>
 </section>
-
+<% } %>
 </main>
 
 
