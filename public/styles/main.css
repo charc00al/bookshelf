@@ -1,14 +1,28 @@
 
-/* ALL */ 
-
+/* COLORS */
 :root {
     --green: rgb(68, 81, 51);
     --dark-olive: rgb(56, 63, 47);
-    --dark-grey: rgb(46, 44, 44);
-    --opaque-grey: rgba(196, 196, 196, 0.5);
     --grey: rgb(129, 133, 122);
+    --dark-grey: rgb(46, 44, 44);
     --whiteish: rgb(213, 213, 213)
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  font-family: poppinsLight, sans-serif;
+}
+
+body {
+    background-color: var(--green);
+    padding: 4rem;
+    font-size: 1rem;
+}
+
+/* FONTS */
 
 @font-face {
   font-family: poppinsLight;
@@ -16,21 +30,8 @@
   font-weight: light;
 }
 
-* {
-  color: white;
-  font-family: poppinsLight, sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-    background-color: var(--green);
-    padding: 4rem;
-}
-
-h1 {
-    font-size: 2.5em;
+.page-heading {
+    font-size: 5rem;
     text-decoration: none;
 }
 
@@ -43,59 +44,12 @@ h1 {
     overflow: hidden;
 }
 
-.page-heading {
-  text-decoration: none;
-}
-
 .author {
     font-style: italic;
 }
 
-.date, .isbn {
-    color: darkolivegreen;
-}
-
-/* ADD BOOK */ 
-input {
-  background-color: var(--whiteish);
-  border-radius: 30px;
-  border-style: none;
-  height: 50px;
-  width: 200px;
-  outline: none;
-}
-
-input[type="text"] {
-  padding-left: 1rem;
-}
-
-.add-book {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    background-color: var(--dark-grey)
-}
-
-.add-book label {
-  font-size: 1.5rem;
-  color: darkolivegreen;
-  padding-top: 0.5rem;
-}
-
-/* button */ 
-.btn {
-  font-size: 1rem;
-  background-color: var(--dark-grey);
-  border: none;
-  cursor: pointer;
-  margin-top: 1rem;
-  border-radius: 30px;
-  height: 50px;
-  width: 130px;
-}
-
-
 /* HOMEPAGE LAYOUT */ 
+
 .homepage-main {
   display: grid;
   grid-template-columns: auto auto;
@@ -110,18 +64,23 @@ input[type="text"] {
   margin-bottom: 2rem;
 }
 
-/* sidebar */ 
 .sidebar-wrapper {
   grid-column: 1;
   grid-row: 2;
 }
+
+.books-wrapper {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* SIDEBAR */
 
 .sidebar {
   margin-right: 2rem;
   height: 650px;
   width: 250px;
   background-color: var(--grey);
-  border-radius: 30px;
 }
 
 .bookshelf-search {
@@ -131,57 +90,23 @@ input[type="text"] {
   align-items: center;
 }
 
-.bookshelf-search .btn {
-  position: absolute;
-  top: 50%;
-  right: 1.7rem;
-  transform: translateY(-50%);
-  border: none;
-  color: #fff;
-  border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.bookshelf-search input{
-  width: 80%;
-  margin-top: 2rem;
-  font-size: 1rem;
-}
-
 .sidebar-text {
   padding-left: 20px;
   font-size: 1rem;
 }
 
-/* ------------------------------------------------------------- */
+/* --------------------------------------------------- */
 /* BOOKS */ 
-
-.books-wrapper {
-  grid-column: 2;
-  grid-row: 2;
-  background-color: var(--dark-grey);
-  border-radius: 30px;
-}
 
 .google-bookshelf, .bookshelf {
   display: grid;
   gap: 1rem;
   padding-top: 2rem; 
   grid-template-columns: repeat(1, 1fr);
-
 }
 
 .book {
   text-align: center;
-/*   background-color: var(--dark-grey);
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 2px 10px var(--dark-grey);
-  transition: transform 0.2s ease; */
 }
 
 .book img {
@@ -191,7 +116,6 @@ input[type="text"] {
 .book-cover {
     max-width: 250px;
     height: auto;
-    border-radius: 30px;
 }
 
 .book-cover:hover {
@@ -200,8 +124,74 @@ input[type="text"] {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* MODULES */ 
+
+/* dark background */ 
+.add-book, .books-wrapper, .btn {
+  background-color: var(--dark-grey);
+}
+
+/* search form input */
+input {
+  background-color: var(--whiteish);
+  border-style: none;
+  height: 50px;
+  width: 200px;
+  outline: none;
+}
+
+input[type="text"] {
+  padding-left: 1rem;
+}
+
+.bookshelf-search input{
+  width: 80%;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+
+/* button */ 
+.btn {
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  height: 50px;
+  width: 130px;
+}
+
+.bookshelf-search .btn {
+  position: absolute;
+  top: 50%;
+  right: 1.7rem;
+  transform: translateY(-50%);
+  border: none;
+  color: #fff;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* round corners */ 
+.btn, input, .sidebar, .books-wrapper, .book-cover {
+  border-radius: 30px;
+}
 
 
+/* ADD NEW BOOK PAGE */ 
+
+.add-book {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.add-book label {
+  font-size: 1.5rem;
+  color: darkolivegreen;
+  padding-top: 0.5rem;
+}
 
 
 /* ---------------------------------------------------------- */
