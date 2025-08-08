@@ -1,11 +1,11 @@
+/* ALL */
 
-/* COLORS */
 :root {
-    --green: rgb(68, 81, 51);
-    --dark-olive: rgb(56, 63, 47);
-    --grey: rgb(129, 133, 122);
-    --dark-grey: rgb(46, 44, 44);
-    --whiteish: rgb(213, 213, 213)
+  --green: rgb(68, 81, 51);
+  --dark-olive: rgb(56, 63, 47);
+  --grey: rgb(129, 133, 122);
+  --dark-grey: rgb(46, 44, 44);
+  --whiteish: rgb(213, 213, 213)
 }
 
 * {
@@ -17,9 +17,9 @@
 }
 
 body {
-    background-color: var(--green);
-    padding: 4rem;
-    font-size: 1rem;
+  background-color: var(--green);
+  padding: 4rem;
+  font-size: 1rem;
 }
 
 /* FONTS */
@@ -31,21 +31,21 @@ body {
 }
 
 .page-heading {
-    font-size: 5rem;
-    text-decoration: none;
+  font-size: 2rem;
+  text-decoration: none;
 }
 
 .title {
-    font-size: 1rem;
-    display: -webkit-box;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
+  font-size: 1rem;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .author {
-    font-style: italic;
+  font-style: italic;
 }
 
 /* HOMEPAGE LAYOUT */ 
@@ -91,11 +91,18 @@ body {
 }
 
 .sidebar-text {
-  padding-left: 20px;
+  margin-left: 3rem;
   font-size: 1rem;
 }
 
-/* --------------------------------------------------- */
+.sidebar-text p {
+  padding-top: 0.4rem;
+}
+
+.sidebar-text-chunk {
+  margin-top: 2.5rem;
+}
+
 /* BOOKS */ 
 
 .google-bookshelf, .bookshelf {
@@ -110,18 +117,18 @@ body {
 }
 
 .book img {
-    height: 220px;
-
+  height: 220px;
 }
+
 .book-cover {
-    max-width: 250px;
-    height: auto;
+  max-width: 250px;
+  height: auto;
 }
 
 .book-cover:hover {
-    transform: scale(1.01);
-    box-shadow: 0 0 1px var(--green);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform: scale(1.01);
+  box-shadow: 0 0 1px var(--green);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* MODULES */ 
@@ -138,16 +145,21 @@ input {
   height: 50px;
   width: 200px;
   outline: none;
+  font-size: 0.9rem;
+  color: var(--dark-grey)
 }
 
 input[type="text"] {
-  padding-left: 1rem;
+  padding-left: 0.8rem;
 }
 
 .bookshelf-search input{
   width: 80%;
   margin-top: 2rem;
-  font-size: 1rem;
+}
+
+.google-search input {
+  margin-right: 1rem;
 }
 
 /* button */ 
@@ -173,18 +185,22 @@ input[type="text"] {
   justify-content: center;
 }
 
+.sidebar .btn {
+  margin-right: 0.4rem;
+}
+
 /* round corners */ 
 .btn, input, .sidebar, .books-wrapper, .book-cover {
   border-radius: 30px;
 }
 
-
+/* ---------------------------------------------------------- */
 /* ADD NEW BOOK PAGE */ 
 
 .add-book {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
 }
 
 .add-book label {
@@ -192,7 +208,6 @@ input[type="text"] {
   color: darkolivegreen;
   padding-top: 0.5rem;
 }
-
 
 /* ---------------------------------------------------------- */
 /* Responsive Breakpoints */
