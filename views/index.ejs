@@ -64,8 +64,9 @@
         <% bookshelf.forEach(book => { %>
             <div class="shelf-book book">
                 <img src="<%= book.cover_url %>" alt="Book cover" class="book-cover">
-                <h3 class="title"> <%= book.title %></h3>
                 <p class="author"> <%= book.author %></p>
+                <h3 class="title"> <%= book.title %></h3>
+
             </div>
         <% }); %>
     <% } %>
