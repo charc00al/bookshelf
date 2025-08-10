@@ -1,22 +1,71 @@
 <%- include("partials/header.ejs") %>
 
-<main>
-    <h1>Add new book </h1>
+<main class="new-book-wrapper">
+    <h2 class="new-book-heading left-col">add new book </h2>
 
-    <form class="add-book" action="/add-new-book" method="post">
-        <label for="title">Book title</label>
-        <input type="text" name="title" id="" value="<%=book.title%>">
+    <form id="new-book-form" class="left-col new-book-form" action="/add-new-book" method="post">
+        <input type="text" name="title" id="nb-title" value="<%=book.title%>" placeholder="title">
 
-        <label for="author">Author</label>
-        <input type="text" name="author" id="" value="<%=book.authors%>">
+        <input type="text" name="author" id="nb-author" value="<%=book.authors%>" placeholder="author">
 
-        <label for="isbn">ISBN 13</label>
-        <input type="text" name="isbn" id="" value="<%=book.isbn%>">
+        <input type="text" name="isbn" id="nb-isbn" value="<%=book.isbn%>" placeholder="ISBN 13">
 
-        <button class="btn" type="submit">Add to my library</button>
+        <textarea name="reason" id="nb-reason" value="" placeholder="reason to read" rows="4"></textarea>
+
+        <select name="status" id="nb-status">
+            <button>
+                <selectedcontent></selectedcontent>
+            </button>
+            <option value="want to read">want to read</option>
+            <option value="reading">reading</option>
+            <option value="finished">finished</option>
+        </select>
+
+        <div class="star-rating">
+            <input type="radio" name="rating" id="star5" value="5">
+            <label for="star5">★</label>
+            
+            <input type="radio" name="rating" id="star4" value="4">
+            <label for="star4">★</label>
+            
+            <input type="radio" name="rating" id="star3" value="3">
+            <label for="star3">★</label>
+            
+            <input type="radio" name="rating" id="star2" value="2">
+            <label for="star2">★</label>
+            
+            <input type="radio" name="rating" id="star1" value="1">
+            <label for="star1">★</label>
+        </div>
+
+        <select id="tags" name="state[]" multiple placeholder="add tags" autocomplete="off">
+            <option value="fantasy">fantasy</option>
+            <option value="sci-fi">sci-fi</option>
+            <option value="gandalf">gandalf</option>
+
+        </select>
+
 
     </form>
 
+    <section class="new-book-cover-wrapper right-col">
+        <img src="<%= book.cover %>" alt="Book cover" class="new-book-cover-blur">
+        <img src="<%= book.cover %>" alt="Book cover" class="new-book-cover">
+    </section>
+
+    <button class="btn add-book-btn right-col" form="add-book-form" type="submit">Add to my library</button>
+
 </main>
+
+<!-- JS script for tagging -->
+<script src="https://cdn.jsdelivr.net/npm/tom-select@2.4.3/dist/js/tom-select.complete.min.js"></script>
+
+<script>
+    new TomSelect("#tags",{
+	persist: false,
+	createOnBlur: true,
+	create: true
+});
+</script>
 
 <%- include("partials/footer.ejs") %>

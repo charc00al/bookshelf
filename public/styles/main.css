@@ -143,28 +143,7 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* MODULES */ 
-
-/* dark background */ 
-.add-book, .books-wrapper, .btn {
-  background-color: var(--dark-grey);
-}
-
-/* search form input */
-input {
-  background-color: var(--whiteish);
-  border-style: none;
-  height: 50px;
-  width: 200px;
-  outline: none;
-  font-size: 0.9rem;
-  color: var(--dark-grey)
-}
-
-input[type="text"] {
-  padding-left: 0.9rem;
-}
-
+/* home page search */
 .bookshelf-search input{
   width: 80%;
   margin-top: 2rem;
@@ -174,7 +153,26 @@ input[type="text"] {
   margin-right: 1rem;
 }
 
-/* button */ 
+/* ------------------------------------------------ */
+/* MODULES */ 
+
+/* dark background */ 
+.books-wrapper, .btn {
+  background-color: var(--dark-grey);
+}
+
+/* round corners */ 
+.btn, input, .sidebar, .books-wrapper, .book-cover, .new-book-cover, .new-book-cover-blur, textarea, select, ::picker(select), option, .ts-control, .ts-wrapper .multi {
+  border-radius: 30px;
+}
+
+/* font size */
+body, .title, .sidebar-text, .google-search .btn {
+  font-size: 1rem;
+}
+
+/* BUTTONS */ 
+
 .btn {
   border: none;
   cursor: pointer;
@@ -201,29 +199,177 @@ input[type="text"] {
   margin-right: 0.4rem;
 }
 
-/* round corners */ 
-.btn, input, .sidebar, .books-wrapper, .book-cover {
-  border-radius: 30px;
+/* FORMS */
+
+/* general */
+
+input, textarea, select, ::picker(select), .ts-control, .ts-wrapper .multi  {
+  border-style: none;
+  outline: none;
+  font-size: 0.9rem;
+  padding-left: 0.9rem;
 }
 
-/* font size */
-body, .title, .sidebar-text, .google-search .btn {
-  font-size: 1rem;
+input {
+  background-color: var(--whiteish);
+  color: var(--dark-grey);
+  height: 50px;
+  width: 200px;
+}
+
+textarea {
+  resize: none;
+  padding-top: 0.9rem;
+}
+
+/* select status option */
+select, ::picker(select) {
+  appearance: base-select;
+}
+
+select {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+::picker(select), .ts-wrapper .multi  {
+  background-color: var(--dark-olive);
+  padding: 0.7rem;
+}
+
+select::picker-icon {
+  color: var(--whiteish);
+  padding-right: 1rem;
+}
+
+option {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 0.5rem;
+  transition: 0.4s;
+}
+
+/* new book form */
+.new-book-form input, .new-book-form textarea, .new-book-form select, .ts-control {
+  background-color: var(--grey);
+  color: white;
+  margin-bottom: 1rem;
+  width: 20vw;
+}
+
+.new-book-form input::placeholder, textarea::placeholder {
+  color: var(--whiteish);
+  font-style: italic;
+}
+
+/* tags */
+
+.ts-control {
+  margin-bottom: 0;
+}
+
+.ts-dropdown .option {
+    background-color: #333a2f; /* dark greenish/grey tone */
+  border-radius: 1rem;
+  padding: 0.5rem 0;
+  border: none;
+}
+
+.ts-dropdown .option {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  transition: background-color 0.15s ease;
+}
+
+.ts-dropdown .option:hover,
+.ts-dropdown .option.active {
+  background-color: Highlight; /* uses system highlight color */
+  color: HighlightText;        /* uses system highlight text color */
+}
+
+/* star rating */
+
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+.star-rating input {
+  display: none;
+}
+
+.star-rating label {
+  font-size: 2rem;
+  color: var(--grey);
+  cursor: pointer;
+}
+
+.star-rating input:checked ~ label {
+  color: gold;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color: gold;
 }
 
 /* ---------------------------------------------------------- */
 /* ADD NEW BOOK PAGE */ 
 
-.add-book {
+/* layout */
+.new-book-wrapper {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 20%;
+}
+
+.left-col {
+  grid-column: 1;
+  justify-self: center;
+}
+
+.right-col {
+  grid-column: 2;
+}
+
+.new-book-heading {
+  grid-row: 1;
+  font-size: 1.5rem;
+  font-weight: lighter;
+  margin-bottom: 1rem;
+}
+
+.new-book-form {
+  grid-row: 2;
   display: flex;
   flex-direction: column;
   width: 300px;
 }
 
-.add-book label {
-  font-size: 1.5rem;
-  color: darkolivegreen;
-  padding-top: 0.5rem;
+.new-book-cover-wrapper {
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-book-btn {
+  grid-row: 3;
+}
+
+/* book cover */
+.new-book-cover-blur {
+  height: 90%;
+  filter: blur(0.5rem);
+  opacity: 70%;
+}
+
+.new-book-cover {
+  z-index: 1;
+  position: absolute;
 }
 
 /* ---------------------------------------------------------- */

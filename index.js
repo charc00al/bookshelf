@@ -97,7 +97,6 @@ app.get("/new-book/:isbn", (req, res) => {
 
 // add new book to the bookshelf (on homepage)
 app.post("/add-new-book", async (req, res) => {
-    console.log(chosenBook);
     const b = chosenBook
     await db.query("INSERT INTO books_test (title, author, isbn, cover_url) VALUES ($1, $2, $3, $4)", [b.title, b.authors[0], b.isbn, b.cover]);
     res.redirect("/");
